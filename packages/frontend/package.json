@@ -8,6 +8,7 @@
     "build": "next build",
     "serve": "next start",
     "lint": "next lint",
+    "export": "next export",
     "format": "prettier --write . '!(node_module|.next|contracts)/**/*'"
   },
   "dependencies": {
