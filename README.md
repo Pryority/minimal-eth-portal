@@ -1,14 +1,17 @@
 # Mini-Trade Portal
 
-![App Demo](scaffold-eth-2-demo.png)
+![App Demo 1](scaffold-eth-2-demo.png)
+![App Demo 2](ramp-demo.png)
+![App Demo 3](swap-demo.png)
 
 > This project was built on top of an active development project that aims to make Ethereum building easier. It is called *[Scaffold-Eth 2](https://github.com/scaffold-eth/scaffold-eth/tree/master)*
 
-Scaffold ETH 2 among many things, allows you to:
+Scaffold ETH 2 among many things, gives you a:
 
 - ✅ Contract component to easily edit the smart contracts and view & test the contract on your frontend
-- 🔥 Burner wallet & local faucet
-- 🔐 Integration with the different wallet providers
+- 🔥 Burner wallet
+- 🚰 Local faucet
+- 🌐 Integration with the different wallet providers
 
 ---
 
@@ -75,6 +78,8 @@ Run the command below to deploy the smart contract to the target network. Make s
 ```
 yarn deploy --network network_name
 ```
+
+---
 
 ## Latest Version of Scallfold-Eth 2
 
