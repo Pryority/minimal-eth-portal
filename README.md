@@ -1,10 +1,10 @@
-# Scaffold-Eth 2
+# Mini-Trade Portal
 
-⚠️ This project is currently under active development. Things might break. Feel free to check the open issues & create new ones.
+![App Demo](scaffold-eth-2-demo.png)
 
-*The best way to get started building decentralized applications on Ethereum!*
+> This project was built on top of an active development project that aims to make Ethereum building easier. It is called *[Scaffold-Eth 2](https://github.com/scaffold-eth/scaffold-eth/tree/master)*
 
-A new version of [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth/tree/master) with its core functionality. Built using NextJS, RainbowKit, Wagmi and Typescript.
+Scaffold ETH 2 among many things, allows you to:
 
 - ✅ Contract component to easily edit the smart contracts and view & test the contract on your frontend
 - 🔥 Burner wallet & local faucet
@@ -76,9 +76,13 @@ Run the command below to deploy the smart contract to the target network. Make s
 yarn deploy --network network_name
 ```
 
+## Latest Version of Scallfold-Eth 2
+
+ Find the latest version of Scaffold ETH with its core functionality, built using NextJS, RainbowKit, Wagmi and Typescript here: *[scaffold-eth](https://github.com/scaffold-eth/scaffold-eth/tree/master)*
+
 ## Contributing to Scaffold-Eth 2
 
-We welcome contributions to Scaffold-Eth 2!
+Contributions are welcome to Scaffold-Eth 2!
 
 Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/se-2/blob/master/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-Eth 2.
 

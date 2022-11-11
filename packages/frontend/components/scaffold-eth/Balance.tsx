@@ -39,10 +39,14 @@ export default function Balance({ address }: BalanceProps) {
 
   if (!address || isLoading || balance === null) {
     return (
-      <div className="animate-pulse flex space-x-4">
-        <div className="rounded-md bg-slate-300 h-6 w-6"></div>
-        <div className="flex items-center space-y-6">
-          <div className="h-2 w-28 bg-slate-300  rounded"></div>
+      <div className="animate-pulse flex space-x-4 items-center cursor-default">
+        <div className="rounded-md bg-slate-500 h-6 w-6 relative justify-center items-center flex">
+          <div>?</div>
+        </div>
+        <div className="flex items-center justify-center space-y-6">
+          <div className="h-2 w-28 border-4 border-slate-500  p-4 rounded-lg relative flex justify-center items-center">
+            <div className="h-2 w-1/2 bg-slate-500  rounded-lg absolute justify-center items-center"></div>
+          </div>
         </div>
       </div>
     );
