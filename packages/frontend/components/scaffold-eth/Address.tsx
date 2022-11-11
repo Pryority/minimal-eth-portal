@@ -67,7 +67,7 @@ export default function Address({
   }
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center drop-shadow-lg">
       <div className="flex-shrink-0">
         <Blockies
           className="mx-auto rounded-md"

@@ -2,6 +2,25 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer components {
+  .buy-btn {
+    @apply btn bg-gradient-to-br hover:border-slate-50/20 text-lime-200 from-green-600 via-green-700 to-green-700 border-green-800  hover:from-green-600 hover:via-green-700 hover:to-green-400 hover:text-green-200;
+  }
+  .buy-btn-h {
+    @apply btn bg-gradient-to-br;
+  }
+}
+
+.body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
 h1,
 h2,
 h3,

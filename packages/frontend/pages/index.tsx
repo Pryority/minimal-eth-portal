@@ -1,57 +1,117 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useTempTestContract } from "~~/components/useTempTestContract";
-import { useAppStore } from "~~/services/store/store";
-import { Address, AddressInput, Balance } from "../components/scaffold-eth";
-import { useEffect } from "react";
+import { Address, Balance } from "../components/scaffold-eth";
+import { useEffect, useState } from "react";
+import { darkTheme, lightTheme, SwapWidget } from "@uniswap/widgets";
+import "@uniswap/widgets/fonts.css";
+import { useAccount } from "wagmi";
+
+const darkMode = true;
 
 const Home: NextPage = () => {
-  const tempTest = useTempTestContract();
+  const [showSwap, setShowSwap] = useState(false);
+  const { address, isDisconnected } = useAccount();
+  const [addr, setAddr] = useState("");
 
-  const tempState = useAppStore(state => state.tempSlice.tempState);
+  const getProvider = async () => {
+    setAddr(address);
+  };
+
+  // const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    console.log("test state, in index.tsx:  " + tempState?.tempStuff);
-  }, [tempState?.tempStuff]);
+    getProvider();
+    // const interval = setInterval(() => {
+    //   setSeconds(seconds => seconds + 1);
+    //   // getProvider();
+    //   // console.log("f");
+    // }, 120000);
+    // return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="px-8">
+    <div className="">
       <Head>
         <title>Scaffold-eth App</title>
         <meta name="description" content="Created with 🏗 scaffold-eth" />
       </Head>
 
-      <main className="flex items-center flex-col py-16">
-        <h1 className="text-center my-12 text-4xl">
-          Welcome to{" "}
-          <a
-            className="text-blue-600 hover:underline"
-            href="https://github.com/scaffold-eth/se-2"
-            target="_blank"
-            rel="noreferrer"
-          >
-            scaffold-eth 2
-          </a>
-        </h1>
+      <main className="flex items-center justify-center flex-col md:py-16 space-y-4 md:space-y-8 w-full">
+        <div className="flex flex-col w-full md:space-y-0 items-center justify-center mx-8">
+          <div className="hidden md:flex md:flex-col w-full justify-center items-center">
+            <div className="flex space-x-2 items-center">
+              <h3 className="font-bold">Your Address</h3>
+              <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
+            </div>
+            <Address address={addr} />
+          </div>
 
-        <p className="text-center text-xl">
-          Get started by editing <code className="italic bg-gray-200">packages/frontend/pages/index.tsx</code>
-        </p>
+          {/* <div className="flex flex-col">
+            <h3 className="font-bold">Address Search</h3>
+            <AddressInput placeholder="Enter any address" />
+          </div> */}
+        </div>
 
-        <h3 className="font-bold">Address Component</h3>
-        <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-center md:my-4 text-4xl">
+            <a
+              className="text-blue-600 hover:underline drop-shadow-lg"
+              href="https://github.com/scaffold-eth/se-2"
+              target="_blank"
+              rel="noreferrer"
+            >
+              trade-crypto.eth
+            </a>
+          </h1>
+          <p className="text-center text-xl drop-shadow-lg cursor-default">A minimal portal to Ethereum.</p>
+        </div>
 
-        <p>
-          <button className="btn btn-primary" onClick={() => tempTest.onClick()}>
-            Daisy UI Button
-          </button>
-        </p>
+        <div className="flex flex-col md:hidden">
+          <div className="flex space-x-2 items-center">
+            <h3 className="font-bold drop-shadow-lg">Your Address</h3>
+            <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
+          </div>
+          <Address address={addr} />
+        </div>
 
-        <h3 className="font-bold">Balance Component</h3>
-        <Balance address="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" />
+        <div className="grid grid-cols-2 items-center justify-between w-full md:justify-center">
+          <div className="flex flex-col pt-6">
+            <a href={`https://buy.ramp.network/swapAsset?ARBITRUM_ETH`} target="_blank" rel="noreferrer">
+              <button className="buy-btn drop-shadow-lg">Buy Ether</button>
+            </a>
+          </div>
 
-        <h3 className="font-bold mt-4">Address Input Component</h3>
-        <AddressInput placeholder="Enter address" />
+          <div className="flex flex-col items-end w-full drop-shadow-lg">
+            <h3 className="font-bold drop-shadow-lg cursor-default">Balance</h3>
+            <Balance address={addr} />
+          </div>
+        </div>
+
+        {isDisconnected ? (
+          <div className="flex flex-col items-center py-8">
+            <div className="" onClick={() => setShowSwap(!showSwap)}>
+              Connect Wallet to Interact
+            </div>
+            <p>↓</p>
+          </div>
+        ) : (
+          <>
+            <div className={showSwap ? "flex flex-col items-center my-8" : "hidden"}>
+              <SwapWidget width={"300px"} className={"my-8"} theme={darkMode ? darkTheme : lightTheme} />
+              <div className="btn btn-warning mb-16" onClick={() => setShowSwap(!showSwap)}>
+                Cancel Swap
+              </div>
+            </div>
+            <div className={!showSwap ? "flex flex-col items-center py-8" : "hidden"}>
+              <div
+                className="btn bg-gradient-to-br border-slate-50/20 from-sky-900 via-blue-900 to-sky-800 drop-shadow-lg hover:border-blue-300 hover:from-sky-700 hover:via-sky-700 hover:to-blue-800 hover:text-sky-200"
+                onClick={() => setShowSwap(!showSwap)}
+              >
+                Swap
+              </div>
+            </div>
+          </>
+        )}
       </main>
     </div>
   );

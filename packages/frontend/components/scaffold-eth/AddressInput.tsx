@@ -25,11 +25,12 @@ const AddressInput = ({ placeholder, onSuccess }: IAddressInput) => {
 
   const onChangeAddress = async (event: ChangeEvent<HTMLInputElement>) => {
     setAddress(event.target.value);
+    console.log(event.target.value);
   };
 
   useEffect(() => {
     if (!ensData) return;
-
+    console.log(ensData);
     setAddress(ensData);
     if (onSuccess) {
       onSuccess(ensData);
