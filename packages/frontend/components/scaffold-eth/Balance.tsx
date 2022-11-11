@@ -42,7 +42,7 @@ export default function Balance({ address }: BalanceProps) {
       <div className="animate-pulse flex space-x-4">
         <div className="rounded-md bg-slate-300 h-6 w-6"></div>
         <div className="flex items-center space-y-6">
-          <div className="h-2 w-28 bg-slate-300 rounded"></div>
+          <div className="h-2 w-28 bg-slate-300  rounded"></div>
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ export default function Balance({ address }: BalanceProps) {
 
   return (
     <div
-      className={`border-2 border-gray-400 rounded-xl p-2 flex flex-col items-center max-w-fit cursor-pointer`}
+      className={`border-2 text-stone-400 hover:text-stone-200 border-gray-600 hover:border-gray-400 transition-all ease-in-out rounded-xl p-2 flex flex-col items-center max-w-fit cursor-pointer `}
       onClick={onToggleBalance}
     >
       <div className="w-full flex items-center justify-center">

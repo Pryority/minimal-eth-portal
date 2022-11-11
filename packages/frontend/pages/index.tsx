@@ -11,7 +11,7 @@ const darkMode = true;
 const Home: NextPage = () => {
   const [showSwap, setShowSwap] = useState(false);
   const { address, isDisconnected } = useAccount();
-  const [addr, setAddr] = useState("");
+  const [addr, setAddr] = useState<string>();
 
   const getProvider = async () => {
     setAddr(address);
@@ -38,13 +38,13 @@ const Home: NextPage = () => {
 
       <main className="flex items-center justify-center flex-col md:py-16 space-y-4 md:space-y-8 w-full">
         <div className="flex flex-col w-full md:space-y-0 items-center justify-center mx-8">
-          <div className="hidden md:flex md:flex-col w-full justify-center items-center">
+          {/* <div className="hidden md:flex md:flex-col w-full justify-center items-center">
             <div className="flex space-x-2 items-center">
               <h3 className="font-bold">Your Address</h3>
               <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
             </div>
-            <Address address={addr} />
-          </div>
+            <Address address={`${addr}`} />
+          </div> */}
 
           {/* <div className="flex flex-col">
             <h3 className="font-bold">Address Search</h3>
@@ -63,27 +63,27 @@ const Home: NextPage = () => {
               trade-crypto.eth
             </a>
           </h1>
-          <p className="text-center text-xl drop-shadow-lg cursor-default">A minimal portal to Ethereum.</p>
+          <p className="text-center text-xl drop-shadow-lg cursor-default">A minimalist crypto trading site.</p>
         </div>
 
-        <div className="flex flex-col md:hidden">
-          <div className="flex space-x-2 items-center">
-            <h3 className="font-bold drop-shadow-lg">Your Address</h3>
-            <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
+        <div className="grid grid-cols-1 items-center justify-center w-full md:justify-center">
+          <div className="flex flex-row space-x-4 items-center">
+            <div className="flex flex-col items-end w-full drop-shadow-lg">
+              <h3 className="font-bold drop-shadow-lg cursor-default text-zinc-500/80">Balance</h3>
+              <Balance address={`${addr}`} />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex space-x-2 items-center">
+                <h3 className="font-bold drop-shadow-lg">Your Address</h3>
+                <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
+              </div>
+              <Address address={`${addr}`} />
+            </div>
           </div>
-          <Address address={addr} />
-        </div>
-
-        <div className="grid grid-cols-2 items-center justify-between w-full md:justify-center">
-          <div className="flex flex-col pt-6">
+          <div className="flex flex-col pt-6 justify-center w-full items-center">
             <a href={`https://buy.ramp.network/swapAsset?ARBITRUM_ETH`} target="_blank" rel="noreferrer">
               <button className="buy-btn drop-shadow-lg">Buy Ether</button>
             </a>
-          </div>
-
-          <div className="flex flex-col items-end w-full drop-shadow-lg">
-            <h3 className="font-bold drop-shadow-lg cursor-default">Balance</h3>
-            <Balance address={addr} />
           </div>
         </div>
 
@@ -98,7 +98,10 @@ const Home: NextPage = () => {
           <>
             <div className={showSwap ? "flex flex-col items-center my-8" : "hidden"}>
               <SwapWidget width={"300px"} className={"my-8"} theme={darkMode ? darkTheme : lightTheme} />
-              <div className="btn btn-warning mb-16" onClick={() => setShowSwap(!showSwap)}>
+              <div
+                className="btn bg-gradient-to-br text-yellow-400 border-slate-50/20 from-yellow-900 via-orange-900 to-yellow-800 drop-shadow-lg hover:border-orange-300 hover:from-yellow-700 hover:via-yellow-700 hover:to-orange-800 hover:text-yellow-200 mb-16"
+                onClick={() => setShowSwap(!showSwap)}
+              >
                 Cancel Swap
               </div>
             </div>
