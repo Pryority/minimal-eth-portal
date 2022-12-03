@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Connector, useAccount, useConnect } from "wagmi";
 import { useEffectOnce, useLocalStorage } from "usehooks-ts";
-import { burnerWalletId, defaultBurnerChainId } from "~~/services/web3/wagmi-burner/BurnerConnector";
 
 export type TAutoConnect = {
   /**
@@ -35,8 +34,7 @@ const getInitialConnector = (
   if (!previousWalletId) {
     // The user was not connected to a wallet
     if (allowBurner && config.autoConnect) {
-      const connector = connectors.find(f => f.id === burnerWalletId);
-      return { connector, chainId: defaultBurnerChainId };
+      return;
     }
   } else {
     // the user was connected to wallet
