@@ -35,7 +35,7 @@ const AddressInput = ({ placeholder, onSuccess }: IAddressInput) => {
     if (onSuccess) {
       onSuccess(ensData);
     }
-  }, [ensData, onSuccess]);
+  }, [ensData, address, onSuccess]);
 
   return (
     <>

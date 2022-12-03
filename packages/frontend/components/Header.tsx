@@ -19,10 +19,10 @@ export default function Header() {
     <div className="mt-16 grid md:grid-cols-2 space-y-4 md:flex-row md:space-x-4 md:space-y-0 items-center justify-center mx-8">
       <div className="hidden md:flex md:flex-col">
         <div className="flex space-x-2 items-center">
-          <h3 className="font-bold">Your Address</h3>
+          <h3 className="font-bold cursor-default">Your Address</h3>
           <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
         </div>
-        <Address address={"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"} />
+        <Address address={"0x0"} />
       </div>
 
       <div className="flex flex-col">

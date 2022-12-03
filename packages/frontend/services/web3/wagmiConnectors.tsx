@@ -26,7 +26,7 @@ export const appChains = configureChains(
       // ToDo. Move to .env || scaffold config
       // This is ours Alchemy's default API key.
       // You can get your own at https://dashboard.alchemyapi.io
-      apiKey: "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF",
+      apiKey: process.env.ALCHEMY_ID,
     }),
     publicProvider(),
   ],
@@ -42,7 +42,7 @@ export const burnerChains = configureChains(
       // ToDo. Move to .env || scaffold config
       // This is ours Alchemy's default API key.
       // You can get your own at https://dashboard.alchemyapi.io
-      apiKey: "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF",
+      apiKey: process.env.ALCHEMY_ID,
     }),
     publicProvider(),
   ],

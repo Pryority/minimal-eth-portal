@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { darkTheme, lightTheme, SwapWidget } from "@uniswap/widgets";
 import "@uniswap/widgets/fonts.css";
 import { useAccount } from "wagmi";
+import Transak from "@biconomy/transak";
 
 const darkMode = true;
 
@@ -13,77 +14,52 @@ const Home: NextPage = () => {
   const { address, isDisconnected } = useAccount();
   const [addr, setAddr] = useState<string>();
 
-  const getProvider = async () => {
-    setAddr(address);
+  const openTransakModule = async () => {
+    const transak = new Transak("STAGING");
+    transak.init();
   };
 
-  // const [seconds, setSeconds] = useState(0);
-
   useEffect(() => {
+    const getProvider = async () => {
+      setAddr(address);
+    };
     getProvider();
-    // const interval = setInterval(() => {
-    //   setSeconds(seconds => seconds + 1);
-    //   // getProvider();
-    //   // console.log("f");
-    // }, 120000);
-    // return () => clearInterval(interval);
-  }, []);
+  }, [address]);
 
   return (
-    <div className="">
+    <div className="justify-center flex flex-col w-full h-screen items-center bg-gradient-to-bl from-stone-700 via-blue-900 to-slate-600 no-scroll">
       <Head>
-        <title>Scaffold-eth App</title>
-        <meta name="description" content="Created with 🏗 scaffold-eth" />
+        <title>Ethereum Portal</title>
+        <meta name="description" content="A minimal portal to trade crypto using Ethereum" />
       </Head>
 
-      <main className="flex items-center justify-center flex-col md:py-16 space-y-4 md:space-y-8 w-full">
-        <div className="flex flex-col w-full md:space-y-0 items-center justify-center mx-8">
-          {/* <div className="hidden md:flex md:flex-col w-full justify-center items-center">
-            <div className="flex space-x-2 items-center">
-              <h3 className="font-bold">Your Address</h3>
-              <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
-            </div>
-            <Address address={`${addr}`} />
-          </div> */}
-
-          {/* <div className="flex flex-col">
-            <h3 className="font-bold">Address Search</h3>
-            <AddressInput placeholder="Enter any address" />
-          </div> */}
-        </div>
-
+      <main className="flex flex-col items-center justify-center w-full h-full relative">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-center md:my-4 text-4xl">
-            <a
-              className="text-blue-600 hover:underline drop-shadow-lg"
-              href="https://github.com/scaffold-eth/se-2"
-              target="_blank"
-              rel="noreferrer"
-            >
-              trade-crypto.eth
-            </a>
+          <h1 className="text-center md:my-4 text-4xl bg-gradient-to-br bg-clip-text text-transparent from-blue-500 via-blue-600 to-teal-600">
+            trade-crypto.eth
           </h1>
-          <p className="text-center text-xl drop-shadow-lg cursor-default">A minimalist crypto trading site.</p>
+          <p className="text-center text-slate-900/80 text-xl drop-shadow-lg cursor-default">
+            A minimalist crypto trading site.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 items-center justify-center w-full md:justify-center">
-          <div className="flex flex-row space-x-4 items-center">
-            <div className="flex flex-col items-end w-full drop-shadow-lg">
-              <h3 className="font-bold drop-shadow-lg cursor-default text-zinc-500/80">Balance</h3>
+        <div className="grid grid-cols-1 items-center justify-center md:justify-center">
+          <div className="flex flex-row space-x-4 items-center justify-end">
+            <div className="flex flex-col items-end drop-shadow-lg">
               <Balance address={`${addr}`} />
             </div>
             <div className="flex flex-col">
               <div className="flex space-x-2 items-center">
-                <h3 className="font-bold drop-shadow-lg">Your Address</h3>
+                <h3 className="font-light cursor-default text-sm text-blue-200 drop-shadow-lg">Your Address</h3>
                 <div className="h-2 w-2 rounded-full bg-green-500 mb-1 animate-pulse" />
               </div>
               <Address address={`${addr}`} />
             </div>
           </div>
           <div className="flex flex-col pt-6 justify-center w-full items-center">
-            <a href={`https://buy.ramp.network/swapAsset?ARBITRUM_ETH`} target="_blank" rel="noreferrer">
-              <button className="buy-btn drop-shadow-lg">Buy Ether</button>
-            </a>
+            <div className="buy-btn drop-shadow-lg" onClick={openTransakModule}>
+              Buy Crypto
+            </div>
           </div>
         </div>
 
@@ -96,8 +72,16 @@ const Home: NextPage = () => {
           </div>
         ) : (
           <>
-            <div className={showSwap ? "flex flex-col items-center my-8" : "hidden"}>
-              <SwapWidget width={"300px"} className={"my-8"} theme={darkMode ? darkTheme : lightTheme} />
+            <div
+              className={
+                showSwap
+                  ? "flex flex-col w-full h-full justify-center items-center absolute space-y-4 bg-black/80 z-20"
+                  : "hidden"
+              }
+            >
+              <div className="flex items-center justify-center max-w-xs">
+                <SwapWidget theme={darkMode ? darkTheme : lightTheme} />
+              </div>
               <div
                 className="btn bg-gradient-to-br text-yellow-400 border-slate-50/20 from-yellow-900 via-orange-900 to-yellow-800 drop-shadow-lg hover:border-orange-300 hover:from-yellow-700 hover:via-yellow-700 hover:to-orange-800 hover:text-yellow-200 mb-16"
                 onClick={() => setShowSwap(!showSwap)}
