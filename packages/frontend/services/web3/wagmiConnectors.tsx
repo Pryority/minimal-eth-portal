@@ -2,7 +2,6 @@ import { connectorsForWallets, wallet } from "@rainbow-me/rainbowkit";
 import { configureChains, chain } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { burnerWalletConfig } from "~~/services/web3/wagmi-burner/burnerWalletConfig";
 
 /**
  * chains for the app
@@ -61,7 +60,6 @@ export const wagmiConnectors = connectorsForWallets([
       wallet.brave({ chains: appChains.chains }),
       wallet.coinbase({ appName: "scaffold-eth", chains: appChains.chains }),
       wallet.rainbow({ chains: appChains.chains }),
-      burnerWalletConfig({ chains: burnerChains.chains }),
     ],
   },
 ]);
