@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       setAddr(address);
     };
     getProvider();
-  }, [address]);
+  }, []);
 
   return (
     <div className="justify-center flex flex-col w-full h-screen items-center bg-gradient-to-bl from-stone-700 via-blue-900 to-slate-600 no-scroll">

@@ -3,14 +3,12 @@ import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider, midnightTheme } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
-// import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { Gnosis, Avalanche } from "../components/CustomChains";
 import type { AppProps } from "next/app";
 import Footer from "~~/components/Footer";
-// import Header from "~~/components/Header";
 
 const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const { chains, provider } = configureChains(
@@ -25,7 +23,7 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       chain.polygonMumbai,
     ],
     [
-      alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
       jsonRpcProvider({ rpc: () => ({ http: "https://rpc.ankr.com/gnosis" }) }),
       publicProvider(),
     ],
