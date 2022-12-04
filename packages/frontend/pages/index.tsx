@@ -6,6 +6,7 @@ import { darkTheme, lightTheme, SwapWidget } from "@uniswap/widgets";
 import "@uniswap/widgets/fonts.css";
 import { useAccount } from "wagmi";
 import Transak from "@biconomy/transak";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const darkMode = true;
 
@@ -65,10 +66,17 @@ const Home: NextPage = () => {
 
         {isDisconnected ? (
           <div className="flex flex-col items-center py-8">
-            <div className="" onClick={() => setShowSwap(!showSwap)}>
-              Connect Wallet to Interact
-            </div>
-            <p>↓</p>
+            <ConnectButton
+              accountStatus={{
+                smallScreen: "avatar",
+                largeScreen: "full",
+              }}
+              showBalance={true}
+              chainStatus={{
+                smallScreen: "icon",
+                largeScreen: "icon",
+              }}
+            />
           </div>
         ) : (
           <>
