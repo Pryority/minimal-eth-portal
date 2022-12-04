@@ -24,6 +24,7 @@
     "daisyui": "^2.31.0",
     "ethers": "^5.0.8",
     "etherspot": "^1.40.0",
+    "jotai-immer": "^0.1.0",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-blockies": "^1.4.1",

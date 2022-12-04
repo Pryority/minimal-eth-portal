@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="justify-center flex flex-col w-full h-screen items-center bg-gradient-to-bl from-stone-700 via-blue-900 to-slate-600 no-scroll">
+    <div className="justify-center flex flex-col w-full h-screen items-center bg-gradient-to-bl from-teal-900 via-blue-900 to-slate-600 no-scroll">
       <Head>
         <title>Ethereum Portal</title>
         <meta name="description" content="A minimal portal to trade crypto using Ethereum" />
