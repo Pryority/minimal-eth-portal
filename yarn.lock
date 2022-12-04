@@ -2193,6 +2193,7 @@ __metadata:
     eslint-plugin-prettier: ^4.2.1
     ethers: ^5.0.8
     etherspot: ^1.40.0
+    jotai-immer: ^0.1.0
     next: ^12.1.6
     postcss: ^8.4.16
     prettier: ^2.7.1
@@ -9664,6 +9665,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jotai-immer@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "jotai-immer@npm:0.1.0"
+  peerDependencies:
+    immer: "*"
+    jotai: "*"
+    react: ">=17.0.0"
+  checksum: 08f0f336ba0b4f3658ef74e57d77965c229312508976aff747b288274ef13e84e5ae342efd78f311be97a220ce13e6b8f1f9cdefd7eccdaccd310061046aac6f
+  languageName: node
+  linkType: hard
+
 "jotai@npm:^1.3.7":
   version: 1.9.2
   resolution: "jotai@npm:1.9.2"
@@ -12949,15 +12961,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"se-2@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "se-2@workspace:."
-  dependencies:
-    husky: ^8.0.1
-    lint-staged: ^13.0.3
-  languageName: unknown
-  linkType: soft
-
 "secp256k1@npm:^3.8.0":
   version: 3.8.0
   resolution: "secp256k1@npm:3.8.0"
@@ -13973,6 +13976,15 @@ __metadata:
   checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
   languageName: node
   linkType: hard
+
+"trade-crypto-portal@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "trade-crypto-portal@workspace:."
+  dependencies:
+    husky: ^8.0.1
+    lint-staged: ^13.0.3
+  languageName: unknown
+  linkType: soft
 
 "ts-command-line-args@npm:^2.2.0":
   version: 2.3.1

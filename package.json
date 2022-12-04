@@ -1,11 +1,10 @@
 {
-  "name": "se-2",
+  "name": "trade-crypto-portal",
   "version": "0.0.1",
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/frontend",
-      "packages/hardhat"
+      "packages/*"
     ]
   },
   "scripts": {
