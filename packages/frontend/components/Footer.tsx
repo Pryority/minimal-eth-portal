@@ -10,11 +10,11 @@ const tempAutoConnectConfig: TAutoConnect = {
 
 export default function Footer() {
   useAutoConnect(tempAutoConnectConfig);
-  const { address, isDisconnected } = useAccount();
+  const { isDisconnected } = useAccount();
   return (
     <div className="fixed bottom-2 items-center w-full">
       <div className="flex flex-col md:flex-row w-full justify-center md:justify-between items-center px-4">
-        {!isDisconnected && address ? (
+        {!isDisconnected ? (
           <ConnectButton
             accountStatus={{
               smallScreen: "avatar",

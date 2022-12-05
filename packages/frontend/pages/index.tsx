@@ -30,8 +30,8 @@ const Home: NextPage = () => {
   return (
     <div className="justify-center flex flex-col w-full h-screen items-center bg-gradient-to-bl from-teal-900 via-blue-900 to-slate-600 no-scroll">
       <Head>
-        <title>Ethereum Portal</title>
-        <meta name="description" content="A minimal portal to trade crypto using Ethereum" />
+        <title>trade-crypto.eth</title>
+        <meta name="description" content="A minimalist portal to trade crypto using Ethereum" />
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full h-full relative">
